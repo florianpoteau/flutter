@@ -17,7 +17,7 @@ class NavJeu extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Image.asset(
+        Image.network(
           game.imageUrl,
           fit: BoxFit.cover,
           width: MediaQuery.of(context).size.width,

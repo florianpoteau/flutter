@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Nav(),
                 PopularCategorie(
-                    backgroundColor: Color.fromARGB(255, 50, 109, 218)),
+                    backgroundColor: Color.fromARGB(255, 59, 96, 167)),
               ],
             ),
           ),

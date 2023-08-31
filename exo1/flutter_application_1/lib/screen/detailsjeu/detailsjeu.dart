@@ -4,12 +4,10 @@ import 'package:flutter_application_1/screen/detailsjeu/Body/livechannel.dart';
 import 'package:flutter_application_1/screen/detailsjeu/Nav/navJeu.dart';
 
 class DetailsJeu extends StatefulWidget {
-  final int jeuId;
   final Game game;
 
   const DetailsJeu({
     Key? key,
-    required this.jeuId,
     required this.game,
   }) : super(key: key);
 

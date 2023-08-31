@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/jeu.dart';
+import 'package:flutter_application_1/services/theme.dart';
 
 class ViewersFollows extends StatelessWidget {
   final Game game;
@@ -19,7 +20,7 @@ class ViewersFollows extends StatelessWidget {
               scale: 0.75,
               child: const Icon(
                 Icons.remove_red_eye,
-                color: Colors.white,
+                color: CustomTheme.ColorIconEyes,
               ),
             ),
             Text(

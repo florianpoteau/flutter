@@ -1,54 +1,65 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/jeu.dart';
 import 'package:flutter_application_1/screen/detailsjeu/detailsjeu.dart';
+import 'package:flutter_application_1/services/theme.dart';
 
 class Categorie extends StatelessWidget {
   final Game game;
-  final int jeuId;
 
   const Categorie({
     super.key,
-    required this.jeuId,
     required this.game,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color: Color.fromARGB(255, 63, 134, 146),
-        child: Column(
-          children: [
-            Image.asset(
-              game.imageUrl,
-              width: 100.0,
-            ),
-            Container(
-                child: Column(
-              children: [
-                Text(game.titre),
-                Row(
-                  children: [
-                    Icon(Icons.remove_red_eye),
-                    Text(
-                      "${game.viewers} viewers",
-                      style: TextStyle(fontSize: 10),
-                    ),
-                  ],
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              DetailsJeu(jeuId: jeuId, game: game),
+    return ConstrainedBox(
+      constraints: BoxConstraints(minHeight: 280),
+      child: Container(
+          padding: EdgeInsets.all(5),
+          color: CustomTheme.defaultTheme.primaryColor,
+          child: Column(
+            children: [
+              Image.network(
+                game.imageUrl,
+                width: 100.0,
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 10),
+              ),
+              Container(
+                  child: Column(
+                children: [
+                  Text(game.titre),
+                  Row(
+                    children: [
+                      Transform.scale(
+                        scale: 0.65,
+                        child: const Icon(
+                          Icons.remove_red_eye,
+                          color: CustomTheme.ColorIconEyes,
                         ),
-                      );
-                    },
-                    child: Text("Voir détail"))
-              ],
-            ))
-          ],
-        ));
+                      ),
+                      Text(
+                        "${game.viewers} viewers",
+                        style: TextStyle(fontSize: 10),
+                      ),
+                    ],
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailsJeu(game: game),
+                          ),
+                        );
+                      },
+                      child: Text("Voir détail"))
+                ],
+              ))
+            ],
+          )),
+    );
   }
 }
