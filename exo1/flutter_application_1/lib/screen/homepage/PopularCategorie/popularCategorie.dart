@@ -77,14 +77,17 @@ class _PopularCategorieState extends State<PopularCategorie> {
                         return Expanded(
                           child: Container(
                             margin: EdgeInsets.all(5.0), // Add margin here
-                            child: Categorie(
-                              game: Game(
-                                titre: categoryData['name'],
-                                imageUrl: categoryData['box_art_url']
-                                    .replaceAll('{width}', '300')
-                                    .replaceAll('{height}', '400'),
-                                viewers: "N/A",
-                                followers: "N/A",
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Categorie(
+                                game: Game(
+                                  titre: categoryData['name'],
+                                  imageUrl: categoryData['box_art_url']
+                                      .replaceAll('{width}', '300')
+                                      .replaceAll('{height}', '400'),
+                                  viewers: "N/A",
+                                  followers: "N/A",
+                                ),
                               ),
                             ),
                           ),

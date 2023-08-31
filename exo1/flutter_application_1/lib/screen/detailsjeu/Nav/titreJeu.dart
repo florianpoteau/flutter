@@ -11,6 +11,7 @@ class TitreJeu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
+      width: MediaQuery.of(context).size.width,
       bottom: 110,
       left: 15,
       child: Padding(

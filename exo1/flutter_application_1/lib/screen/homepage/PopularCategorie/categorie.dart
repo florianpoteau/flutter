@@ -28,25 +28,33 @@ class Categorie extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 10),
               ),
               Container(
-                  child: Column(
-                children: [
-                  Text(game.titre),
-                  Row(
-                    children: [
-                      Transform.scale(
-                        scale: 0.65,
-                        child: const Icon(
-                          Icons.remove_red_eye,
-                          color: CustomTheme.ColorIconEyes,
+                child: Column(
+                  children: [
+                    Container(
+                      constraints: BoxConstraints(
+                          maxWidth:
+                              150), // Définissez la largeur maximale souhaitée
+                      child: Text(
+                        game.titre,
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Transform.scale(
+                          scale: 0.65,
+                          child: const Icon(
+                            Icons.remove_red_eye,
+                            color: CustomTheme.ColorIconEyes,
+                          ),
                         ),
-                      ),
-                      Text(
-                        "${game.viewers} viewers",
-                        style: TextStyle(fontSize: 10),
-                      ),
-                    ],
-                  ),
-                  ElevatedButton(
+                        Text(
+                          "${game.viewers} viewers",
+                          style: TextStyle(fontSize: 10),
+                        ),
+                      ],
+                    ),
+                    ElevatedButton(
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -55,9 +63,11 @@ class Categorie extends StatelessWidget {
                           ),
                         );
                       },
-                      child: Text("Voir détail"))
-                ],
-              ))
+                      child: Text("Voir détail"),
+                    ),
+                  ],
+                ),
+              )
             ],
           )),
     );
