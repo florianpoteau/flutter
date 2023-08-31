@@ -1,27 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/video.dart';
 
 class CurrentStream extends StatelessWidget {
-  final String image_live;
-  final String titre_live;
-  final String viewers_live;
+  final Stream stream;
 
   const CurrentStream({
-    required this.image_live,
-    required this.titre_live,
-    required this.viewers_live,
+    required this.stream,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(bottom: 25),
       width: MediaQuery.of(context).size.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              Image.asset(
-                image_live,
+              Image.network(
+                stream.thumbnail_url,
                 width: MediaQuery.of(context).size.width * 0.4,
               ),
               SizedBox(width: 8), // Espacement entre l'image et le titre
@@ -29,7 +27,19 @@ class CurrentStream extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(titre_live),
+                    Container(
+                      padding: EdgeInsets.only(left: 8),
+                      child: Text(
+                        stream.title,
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 255, 4, 4),
+                          fontSize: 18,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+
+                    Text(stream.description),
                     SizedBox(height: 4), // Espacement entre le titre et l'icône
                     Row(
                       children: [
@@ -40,7 +50,7 @@ class CurrentStream extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
-                        Text(" $viewers_live viewers"),
+                        Text(" ${stream.viewersCount} viewers"),
                       ],
                     ),
                   ],

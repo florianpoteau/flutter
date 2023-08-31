@@ -30,7 +30,9 @@ class _DetailsJeuState extends State<DetailsJeu> {
               game: widget.game,
             ),
             // Body
-            LiveChannel(),
+            LiveChannel(
+              gameId: widget.game.id,
+            ),
           ],
         ),
       ),

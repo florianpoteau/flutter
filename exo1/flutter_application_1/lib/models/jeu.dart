@@ -1,10 +1,12 @@
 class Game {
+  final String id;
   final String titre;
   final String imageUrl;
   final String viewers;
   final String followers;
 
   Game({
+    required this.id,
     required this.titre,
     required this.imageUrl,
     required this.viewers,

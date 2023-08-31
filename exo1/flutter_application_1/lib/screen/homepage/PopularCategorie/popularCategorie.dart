@@ -22,8 +22,6 @@ class _PopularCategorieState extends State<PopularCategorie> {
   Future<List<dynamic>> fetchPost() async {
     final response = await ApiService.getCategorie();
 
-    logger.d(response);
-
     if (response.statusCode == 200) {
       Map<String, dynamic> responseData = jsonDecode(response.body);
       List<dynamic> gamesList = responseData['data'];
@@ -81,6 +79,7 @@ class _PopularCategorieState extends State<PopularCategorie> {
                               alignment: Alignment.center,
                               child: Categorie(
                                 game: Game(
+                                  id: categoryData['id'],
                                   titre: categoryData['name'],
                                   imageUrl: categoryData['box_art_url']
                                       .replaceAll('{width}', '300')
