@@ -24,7 +24,7 @@ class ViewersFollows extends StatelessWidget {
               ),
             ),
             Text(
-              " ${game.viewers} viewers",
+              " N/A viewers",
               style: const TextStyle(color: Color.fromARGB(200, 20, 194, 238)),
             ),
             const SizedBox(width: 10),
@@ -36,7 +36,7 @@ class ViewersFollows extends StatelessWidget {
               ),
             ),
             Text(
-              " ${game.followers} followers",
+              " N/A followers",
               style: const TextStyle(color: Color.fromARGB(197, 255, 193, 7)),
             ),
           ],

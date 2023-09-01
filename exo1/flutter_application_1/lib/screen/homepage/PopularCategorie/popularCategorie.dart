@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screen/homepage/PopularCategorie/categorie.dart';
 import 'package:flutter_application_1/models/jeu.dart';
+import 'package:flutter_application_1/services/Url.dart';
 import 'package:flutter_application_1/services/service.dart';
 import 'package:logger/logger.dart';
 
@@ -19,31 +20,17 @@ class PopularCategorie extends StatefulWidget {
 class _PopularCategorieState extends State<PopularCategorie> {
   final Logger logger = Logger();
 
-  Future<List<dynamic>> fetchPost() async {
-    final response = await ApiService.getCategorie();
-
-    if (response.statusCode == 200) {
-      Map<String, dynamic> responseData = jsonDecode(response.body);
-      List<dynamic> gamesList = responseData['data'];
-      logger.d("Réponse de l'API: $gamesList");
-      return gamesList;
-    } else {
-      logger.e('Echec du chargement des données');
-      throw Exception('Failed to load post');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<dynamic>>(
-      future: fetchPost(),
-      builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
+    return FutureBuilder<List<Game>>(
+      future: Service.fetchGame(),
+      builder: (BuildContext context, AsyncSnapshot<List<Game>> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return CircularProgressIndicator();
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         } else {
-          List<dynamic> categoriesData = snapshot.data!;
+          List<Game> categoriesData = snapshot.data!;
 
           return Container(
             color: widget.backgroundColor,
@@ -79,13 +66,11 @@ class _PopularCategorieState extends State<PopularCategorie> {
                               alignment: Alignment.center,
                               child: Categorie(
                                 game: Game(
-                                  id: categoryData['id'],
-                                  titre: categoryData['name'],
-                                  imageUrl: categoryData['box_art_url']
+                                  id: categoryData.id,
+                                  titre: categoryData.titre,
+                                  imageUrl: categoryData.imageUrl
                                       .replaceAll('{width}', '300')
                                       .replaceAll('{height}', '400'),
-                                  viewers: "N/A",
-                                  followers: "N/A",
                                 ),
                               ),
                             ),
