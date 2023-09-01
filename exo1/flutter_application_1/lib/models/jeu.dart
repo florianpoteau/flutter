@@ -1,13 +1,19 @@
 class Game {
+  final String id;
   final String titre;
   final String imageUrl;
-  final String viewers;
-  final String followers;
 
   Game({
+    required this.id,
     required this.titre,
     required this.imageUrl,
-    required this.viewers,
-    required this.followers,
   });
+
+  factory Game.fromJson(Map<String, dynamic> json) {
+    return Game(
+      id: json['id'],
+      titre: json['name'],
+      imageUrl: json['box_art_url'],
+    );
+  }
 }

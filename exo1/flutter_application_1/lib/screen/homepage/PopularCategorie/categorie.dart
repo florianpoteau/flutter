@@ -49,7 +49,7 @@ class Categorie extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "${game.viewers} viewers",
+                          "N/A viewers",
                           style: TextStyle(fontSize: 10),
                         ),
                       ],
