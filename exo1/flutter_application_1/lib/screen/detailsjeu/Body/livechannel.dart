@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/video.dart';
 import 'package:flutter_application_1/screen/detailsjeu/Body/currentstream.dart';
 import 'package:flutter_application_1/services/url.dart';
+import 'package:flutter_application_1/services/Url.dart';
 import 'package:flutter_application_1/services/service.dart';
 import 'package:logger/logger.dart';
 
